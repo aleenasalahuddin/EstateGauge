@@ -7,7 +7,7 @@ import joblib
 model, feature_names = joblib.load("estate_model.pkl")
 
 # 3. App title
-st.title("🏡 EstateGauge: Real Estate Risk & Yield Evaluator")
+st.title("EstateGauge: Real Estate Risk & Yield Evaluator")
 
 # 4. User inputs
 crime_density = st.number_input("Crime Density (per km²)", 0.0, 1000.0, 50.0)
@@ -29,3 +29,4 @@ X_new = X_new.reindex(columns=feature_names, fill_value=0)
 if st.button("Evaluate Property"):
     pred = model.predict(X_new)[0]
     st.success(f"Predicted Score: {pred:.2f}")
+
