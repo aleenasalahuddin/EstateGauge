@@ -15,4 +15,13 @@ X_new = pd.DataFrame([[year,month,pop,income]],
                      columns=['year','month','Population','MedianIncome'])
 pred = model.predict(X_new)[0]
 
+
 st.metric("Predicted Home Value", f"${pred:,.0f}")
+# expected order of features
+expected_features = ['crime_density', 'dist_to_school', 'zhvi_cagr']
+
+# user input
+X_new = pd.DataFrame([user_input_dict])
+
+# reindex so order & missing cols handled
+X_new = X_new.reindex(columns=expected_features, fill_value=0)
